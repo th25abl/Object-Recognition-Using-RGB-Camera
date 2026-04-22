@@ -1,0 +1,255 @@
+#VRML_SIM R2025a utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/RectangleArena.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/Parquetry.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/toys/protos/RubberDuck.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/kitchen/breakfast/protos/JamJar.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/obstacles/protos/OilBarrel.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/fruits/protos/Apple.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/drinks/protos/Can.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/balls/protos/FifaSoccerBall.proto"
+
+WorldInfo {
+}
+Viewpoint {
+  orientation -0.1466903490070934 0.026660028525000674 0.9888231309932143 2.7859835175569905
+  position 2.108868917921915 -1.5597501757875958 1.1375154473472306
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  translation -0.606433 -0.608541 -2.22044e-16
+  rotation 0 0 1 -2.3561953071795863
+  floorSize 3 2
+  floorTileSize 0.6 0.5
+  floorAppearance Parquetry {
+  }
+}
+Robot {
+  translation -0.461121 -0.592489 -0.000237712
+  rotation -0.015716001641461197 -0.17574448523673009 -0.9843103591862082 0.17133289456823114
+  children [
+    Pose {
+      translation 0 0 0.0415
+      rotation 0 0 1 -1.570796
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.333333 0 0.498039
+            roughness 1
+            metalness 0
+          }
+          geometry DEF BODY Cylinder {
+            height 0.08
+            radius 0.045
+          }
+        }
+      ]
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position -2094.251100240069
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "left wheel motor"
+          consumptionFactor 70
+        }
+        PositionSensor {
+          name "left wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 0.04499999999999959 0.025
+        rotation -0.6674377953492905 0.6674379574530642 0.3302322853540522 3.7795068909189666
+        children [
+          DEF WHEEL Pose {
+            rotation 0.577656895078166 0.5771968951617173 -0.5771968951617173 -2.093935
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 1 0 0
+                  roughness 1
+                  metalness 0
+                }
+                geometry Cylinder {
+                  height 0.01
+                  radius 0.025
+                }
+              }
+            ]
+          }
+        ]
+        name "left wheel"
+        boundingObject USE WHEEL
+        physics DEF PHYSICS_WHEEL Physics {
+          density -1
+          mass 0.05
+        }
+      }
+    }
+    HingeJoint {
+      jointParameters HingeJointParameters {
+        position 2239.7152500212164
+        axis 0 1 0
+        anchor 0 0 0.025
+      }
+      device [
+        RotationalMotor {
+          name "right wheel motor"
+          consumptionFactor 70
+        }
+        PositionSensor {
+          name "right wheel sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.044999999999999936 0.025
+        rotation -0.7065189932039935 0.7065189307361781 -0.04076656416014224 3.060104662326081
+        children [
+          USE WHEEL
+        ]
+        name "right wheel"
+        boundingObject USE WHEEL
+        physics USE PHYSICS_WHEEL
+      }
+    }
+    Camera {
+      translation 0.04 0 0.0915
+      children [
+        Pose {
+          translation -0.015 0 0
+          rotation -0.5771968951617173 -0.577656895078166 -0.5771968951617173 -2.093935
+          children [
+            Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Cylinder {
+                height 0.03
+                radius 0.01
+              }
+            }
+          ]
+        }
+      ]
+      fieldOfView 1.0472
+      width 256
+      height 128
+      antiAliasing TRUE
+      recognition Recognition {
+        maxRange 0.25
+        frameColor 0.929412 0.831373 0
+        frameThickness 3
+      }
+    }
+  ]
+  boundingObject Pose {
+    translation 0 0 0.0415
+    rotation 0 0 1 -1.570796
+    children [
+      USE BODY
+    ]
+  }
+  physics Physics {
+    density -1
+    mass 0.5
+  }
+  controller "my_controller"
+}
+RubberDuck {
+  translation -0.1345556646534248 -0.48794829971791004 0.020437745572813092
+  rotation 6.110879776762768e-07 -8.583946310138234e-06 0.9999999999629712 0.13849493894077633
+}
+RubberDuck {
+  translation -0.23174457752744465 -0.2523022126494739 0.020437338875335154
+  rotation -8.886814508539462e-06 -1.691582935865475e-05 0.9999999998174397 0.0556403847000158
+  name "rubber duck(2)"
+}
+RubberDuck {
+  translation -0.14658343405269467 -0.7003649390212879 0.020437673477061307
+  rotation 9.571929659847356e-07 -4.194775474967514e-06 -0.9999999999907438 0.2529284610243215
+  name "rubber duck(1)"
+}
+JamJar {
+  translation -0.8782376712077702 -0.13078448866775427 -0.00069620000000023
+  rotation 3.495656772649964e-17 9.906945943496781e-17 -1 1.068685173676381
+}
+JamJar {
+  translation -0.5148727256812252 -0.10537688174312425 -0.00069620000000023
+  rotation 6.047114365343054e-17 5.5189213656238054e-17 -1 1.5683154681990796
+  name "jam jar(3)"
+}
+JamJar {
+  translation -0.6718971816321334 -0.09838005463169475 -0.00069620000000023
+  rotation 4.079717440084451e-17 -1.713359039078797e-17 -1 1.3316290281426613
+  name "jam jar(1)"
+}
+OilBarrel {
+  translation -0.48908 -1.36289 0.06
+  height 0.11
+  radius 0.043
+}
+OilBarrel {
+  translation -0.613888 -1.33363 0.06
+  name "oil barrel(4)"
+  height 0.11
+  radius 0.043
+}
+OilBarrel {
+  translation -0.774171 -1.22847 0.17
+  name "oil barrel(3)"
+  height 0.11
+  radius 0.043
+}
+OilBarrel {
+  translation -0.726952 -1.28385 0.06
+  name "oil barrel(1)"
+  height 0.11
+  radius 0.043
+}
+OilBarrel {
+  translation -0.807065 -1.19764 0.06
+  name "oil barrel(2)"
+  height 0.11
+  radius 0.043
+}
+Apple {
+  translation -1.0349574319294799 -0.9330917265961135 0.04976455999999977
+  rotation 0.4574197531303335 0.08250979246485123 -0.8854147635959049 2.0688626712276927
+}
+Apple {
+  translation -0.9071301122944457 -0.999937933157489 0.04976455999999977
+  rotation 0.8410518753321439 -0.15310104089193577 0.5188369823731628 -2.1846761465360576
+  name "apple(1)"
+}
+Apple {
+  translation -1.0095337511903029 -0.7568116074473761 0.04976455999999977
+  rotation -0.14642421188088983 0.8957811771665414 -0.4196856356955595 2.5956473029374596
+  name "apple(2)"
+}
+Can {
+  translation -1.2204971625512833 -0.5444374048293763 0.031475319999999786
+  rotation 0.3511283483437227 -0.7096404180834307 -0.6108349695390591 2.2083108456740472
+}
+Can {
+  translation -1.0280348331335265 -0.29526974044725135 0.060962659999999766
+  rotation -5.936770973371762e-17 -1.267386461173797e-16 1 0.9575130617393036
+  name "can(1)"
+}
+Can {
+  translation -1.0833009003386578 -0.5328171027272249 0.06096265999999977
+  rotation 0.8664963682687082 0.4991833769038579 1.2444042153053098e-17 3.141592653589793
+  name "can(2)"
+}
+FifaSoccerBall {
+  translation -0.03 -1.26 0.06967823199999676
+  size 1
+}
